@@ -26,7 +26,7 @@ public class tp1 {
         //Pour envoyer les touches du clavier ( saisir la recherche)
         barreRecherche.sendKeys("machine a raclette");
         barreRecherche.sendKeys(Keys.ENTER);
-        //driver.quit();
+        driver.quit();
 
     }
     @Test
