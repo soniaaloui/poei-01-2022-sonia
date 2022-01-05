@@ -12,7 +12,7 @@ public class tp1 {
 
     @BeforeMethod
     public void setup(){
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get("https://www.amazon.fr");
         driver.manage().window().maximize();
         // Fermer cookies
@@ -32,8 +32,6 @@ public class tp1 {
         //driver.get("https://www.amazon.fr");
         //driver.manage().window().maximize();
         // Fermer cookies
-        WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
-        buttonCookies.click();
         //Choisir name en deuxieme si id pas possible
         //driver.findElement(By.name("field-keywords"));
         //Choisir id en premier
@@ -50,12 +48,7 @@ public class tp1 {
     }
     @Test
     public void test2(){
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.amazon.fr");
-        driver.manage().window().maximize();
-        // Fermer cookies
-        WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
-        buttonCookies.click();
+
         //Choisir name en deuxieme si id pas possible
         //driver.findElement(By.name("field-keywords"));
         //Choisir id en premier
@@ -78,7 +71,7 @@ public class tp1 {
 
         WebElement ajoutPanier = driver.findElement(By.cssSelector("[data-action='dp-pre-atc-declarative']"));
         ajoutPanier.click();
-       
+
 
     }
 }
