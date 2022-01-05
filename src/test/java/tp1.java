@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -17,6 +18,11 @@ public class tp1 {
         // Fermer cookies
         WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
         buttonCookies.click();
+    }
+
+    @AfterMethod
+    public void teardown(){
+        driver.quit();
     }
 
 
@@ -39,7 +45,7 @@ public class tp1 {
         //Pour envoyer les touches du clavier ( saisir la recherche)
         barreRecherche.sendKeys("machine a raclette");
         barreRecherche.sendKeys(Keys.ENTER);
-        driver.quit();
+
 
     }
     @Test
@@ -72,7 +78,7 @@ public class tp1 {
 
         WebElement ajoutPanier = driver.findElement(By.cssSelector("[data-action='dp-pre-atc-declarative']"));
         ajoutPanier.click();
-        driver.quit();
+       
 
     }
 }
