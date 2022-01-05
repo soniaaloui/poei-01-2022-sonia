@@ -3,15 +3,28 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class tp1 {
+    WebDriver driver;
 
-    @Test
-    public void test1(){
+    @BeforeMethod
+    public void setup(){
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.amazon.fr");
         driver.manage().window().maximize();
+        // Fermer cookies
+        WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
+        buttonCookies.click();
+    }
+
+
+    @Test
+    public void test1(){
+        //WebDriver driver = new ChromeDriver();
+        //driver.get("https://www.amazon.fr");
+        //driver.manage().window().maximize();
         // Fermer cookies
         WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
         buttonCookies.click();
