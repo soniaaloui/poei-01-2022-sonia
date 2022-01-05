@@ -3,18 +3,35 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class tp1 {
+    WebDriver driver;
 
-    @Test
-    public void test1(){
-        WebDriver driver = new ChromeDriver();
+    @BeforeMethod
+    public void setup(){
+        driver = new ChromeDriver();
         driver.get("https://www.amazon.fr");
         driver.manage().window().maximize();
         // Fermer cookies
         WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
         buttonCookies.click();
+    }
+
+    @AfterMethod
+    public void teardown(){
+        driver.quit();
+    }
+
+
+    @Test
+    public void test1(){
+        //WebDriver driver = new ChromeDriver();
+        //driver.get("https://www.amazon.fr");
+        //driver.manage().window().maximize();
+        // Fermer cookies
         //Choisir name en deuxieme si id pas possible
         //driver.findElement(By.name("field-keywords"));
         //Choisir id en premier
@@ -26,17 +43,12 @@ public class tp1 {
         //Pour envoyer les touches du clavier ( saisir la recherche)
         barreRecherche.sendKeys("machine a raclette");
         barreRecherche.sendKeys(Keys.ENTER);
-        driver.quit();
+
 
     }
     @Test
     public void test2(){
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.amazon.fr");
-        driver.manage().window().maximize();
-        // Fermer cookies
-        WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
-        buttonCookies.click();
+
         //Choisir name en deuxieme si id pas possible
         //driver.findElement(By.name("field-keywords"));
         //Choisir id en premier
@@ -59,7 +71,7 @@ public class tp1 {
 
         WebElement ajoutPanier = driver.findElement(By.cssSelector("[data-action='dp-pre-atc-declarative']"));
         ajoutPanier.click();
-        driver.quit();
+
 
     }
 }
