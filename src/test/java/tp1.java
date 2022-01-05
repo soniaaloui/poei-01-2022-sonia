@@ -18,7 +18,7 @@ public class tp1 {
     public void setup() {
         driver = new ChromeDriver();
         // implicit wait
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.get("https://www.amazon.fr");
         driver.manage().window().maximize();
         // Fermer cookies
