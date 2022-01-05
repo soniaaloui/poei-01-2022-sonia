@@ -26,13 +26,40 @@ public class tp1 {
         //Pour envoyer les touches du clavier ( saisir la recherche)
         barreRecherche.sendKeys("machine a raclette");
         barreRecherche.sendKeys(Keys.ENTER);
-
-        //driver.quit();
-        
-
-
+        driver.quit();
 
     }
     @Test
-    public void test2(){}
+    public void test2(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.amazon.fr");
+        driver.manage().window().maximize();
+        // Fermer cookies
+        WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
+        buttonCookies.click();
+        //Choisir name en deuxieme si id pas possible
+        //driver.findElement(By.name("field-keywords"));
+        //Choisir id en premier
+        WebElement barreRecherche = driver.findElement(By.id("twotabsearchtextbox"));
+        //Choisir cssSeLector en priorité par rapport a xpath
+        //driver.findElement(By.cssSelector(""));
+        //driver.findElement(By.xpath("//*[@id='twotabsearchtextbox'"));
+        //driver.findElement(By.xpath("//*[@name='field-keywords'"));
+        //Pour envoyer les touches du clavier ( saisir la recherche)
+        barreRecherche.sendKeys("machine a raclette");
+        barreRecherche.sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+         WebElement produit1 = driver.findElement(By.cssSelector("[cel_widget_id='MAIN-SEARCH_RESULTS-5']"));
+        produit1.click();
+
+        WebElement ajoutPanier = driver.findElement(By.cssSelector("[data-action='dp-pre-atc-declarative']"));
+        ajoutPanier.click();
+        driver.quit();
+
+    }
 }
