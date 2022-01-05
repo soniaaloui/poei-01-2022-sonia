@@ -3,9 +3,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import java.time.Duration;
+import java.util.List;
 
 public class tp1 {
     WebDriver driver;
@@ -74,4 +79,46 @@ public class tp1 {
 
 
     }
+
+    @Test
+    public void testExplicitWait() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        driver.findElement(By.id("nav-hamburger-menu")).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".hmenu-item[data-menu-id='10']")));
+        driver.findElement(By.cssSelector(".hmenu-item[data-menu-id='10']")).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("ul.hmenu-visible > li:nth-child(3)")));
+        driver.findElement(By.cssSelector("ul.hmenu-visible > li:nth-child(3) > a")).click();
+    }
+
+
+    @Test
+    public void testMultipleElements() {
+
+        ///AAA
+        //Arrange
+        int expectdNumberResults = 60;
+        String keyword = "machine a raclette";
+        int timeoutSearchLoad = 10;
+        By searchBarSelector = By.id("twotabsearchtextbox");
+        By searchResultSelector = By.cssSelector("[data-component-type='s-search-result']");
+
+
+
+        // [data-component-type='s-search-result']
+        //Act
+        WebElement barreRecherche = driver.findElement(searchBarSelector);
+        barreRecherche.sendKeys(keyword + Keys.ENTER);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSearchLoad));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[data-component-type='s-search-result']")));
+
+        List<WebElement> listeResultat = driver.findElements(searchResultSelector);
+        //listeResultat.get(3).click();
+
+        //Assert
+        Assert.assertEquals(listeResultat.size(), expectdNumberResults);
+    }
+
 }
