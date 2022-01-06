@@ -12,12 +12,16 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
+import java.time.Duration;
+
 public class tp1 {
     WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         driver = new ChromeDriver();
+        // implicit wait
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.get("https://www.amazon.fr");
         driver.manage().window().maximize();
         // Fermer cookies
@@ -26,13 +30,12 @@ public class tp1 {
     }
 
     @AfterMethod
-    public void teardown(){
+    public void teardown() {
         driver.quit();
     }
 
-
     @Test
-    public void test1(){
+    public void test1() {
         //WebDriver driver = new ChromeDriver();
         //driver.get("https://www.amazon.fr");
         //driver.manage().window().maximize();
@@ -51,8 +54,9 @@ public class tp1 {
 
 
     }
+
     @Test
-    public void test2(){
+    public void test2() {
 
         //Choisir name en deuxieme si id pas possible
         //driver.findElement(By.name("field-keywords"));
@@ -65,23 +69,17 @@ public class tp1 {
         //Pour envoyer les touches du clavier ( saisir la recherche)
         barreRecherche.sendKeys("machine a raclette");
         barreRecherche.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-         WebElement produit1 = driver.findElement(By.cssSelector("[cel_widget_id='MAIN-SEARCH_RESULTS-5']"));
+        WebElement produit1 = driver.findElement(By.cssSelector("[cel_widget_id='MAIN-SEARCH_RESULTS-10']"));
         produit1.click();
 
         WebElement ajoutPanier = driver.findElement(By.cssSelector("[data-action='dp-pre-atc-declarative']"));
         ajoutPanier.click();
 
-
     }
 
     @Test
     public void testExplicitWait() {
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         driver.findElement(By.id("nav-hamburger-menu")).click();
 
@@ -90,6 +88,7 @@ public class tp1 {
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("ul.hmenu-visible > li:nth-child(3)")));
         driver.findElement(By.cssSelector("ul.hmenu-visible > li:nth-child(3) > a")).click();
+
     }
 
 
@@ -122,3 +121,6 @@ public class tp1 {
     }
 
 }
+
+
+
