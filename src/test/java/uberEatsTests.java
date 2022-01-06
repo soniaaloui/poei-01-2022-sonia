@@ -44,6 +44,7 @@ public class uberEatsTests {
         By searchAjoutMenu = By.cssSelector(".spacer._24 + button.b8");
         By autocompleteSelector = By.cssSelector("#location-typeahead-home-menu > li");
         By cartSelector = By.cssSelector("button[aria-label='checkout'] > div");
+        String expectedCartItems = "1";
 
 
 
@@ -80,7 +81,7 @@ public class uberEatsTests {
         WebElement cart = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(cartSelector));
 
-        Assert.assertTrue(cart.getText().contains("1"), "le panier est different de 1");
+        Assert.assertTrue(cart.getText().contains(expectedCartItems), "le panier est different de 1");
     }
 
     @AfterMethod
