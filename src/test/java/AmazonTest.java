@@ -35,6 +35,11 @@ public class AmazonTest {
         SearchResultPage searchResultPage = new SearchResultPage(driver);
         searchResultPage.openResult(0);
 
+        ProductPage productPage = new ProductPage(driver);
+        productPage.addToCart();
+        productPage.noConverge();
+
+
         //Assert
     }
         @Test
@@ -49,7 +54,12 @@ public class AmazonTest {
             SearchResultPage searchResultPage = new SearchResultPage(driver);
             searchResultPage.openResult(0);
 
+            ProductPage productPage = new ProductPage(driver);
+            productPage.addToCart();
+
         }
+
+
 
 
     }
