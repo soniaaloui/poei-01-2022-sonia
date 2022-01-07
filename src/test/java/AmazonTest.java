@@ -32,6 +32,9 @@ public class AmazonTest {
         MainPage mainPage = new MainPage(driver);
         mainPage.searchProduct(productName);
 
+        SearchResultPage searchResultPage = new SearchResultPage(driver);
+        searchResultPage.openResult(0);
+
         //Assert
     }
         @Test
@@ -42,6 +45,9 @@ public class AmazonTest {
             //ACT
             MainPage mainPage = new MainPage(driver);
             mainPage.searchProduct(productName);
+
+            SearchResultPage searchResultPage = new SearchResultPage(driver);
+            searchResultPage.openResult(0);
 
         }
 
