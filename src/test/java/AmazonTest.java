@@ -23,10 +23,10 @@ public class AmazonTest {
         }
 
     @Test
-    public void nintendoSwitchToCartPriceTest() {
+    public void lapTopAddToCartPriceTest() {
 
         //Arrange
-        String productName = "Nintendo Switch oled";
+        String productName = "ordinateur Portable";
 
         //ACT
         MainPage mainPage = new MainPage(driver);
@@ -38,6 +38,15 @@ public class AmazonTest {
         ProductPage productPage = new ProductPage(driver);
         productPage.addToCart();
         productPage.noConverge();
+
+
+        ConfirmationAddToCartPage confirmationAddToCartPage = new ConfirmationAddToCartPage(driver);
+        confirmationAddToCartPage.openCart();
+
+        CartPage cartPage = new CartPage(driver);
+        String productionPrice = cartPage.getProductPrice(0);
+        String activeCartSubtotal = cartPage.getActiveCartSubtotal();
+        String buyboxCartSubtotal = cartPage.getBuyboxCartSubtotal();
 
 
         //Assert
