@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -10,6 +11,7 @@ public class AppleTest {
 
 
     WebDriver driver;
+
 
     @BeforeMethod
     public void setup() {
@@ -23,6 +25,14 @@ public class AppleTest {
 
     @Test
     public void IPhone13ProMax256GoBleuAlpinTest(){
+
+        String exceptPrice = "1 379,00 €";
+        String productName = "iPhone 13 Pro Max 256 Go Bleu Alpin";
+        String title = "Le montant total de votre Panier est de 1 379,00 ";
+        String subTotal = "Sous-total";
+        String TotalPrice = "Votre total";
+
+
         MainPage mainPage = new MainPage(driver);
         mainPage.openIphonePage();
 
@@ -43,6 +53,21 @@ public class AppleTest {
 
         ConfirmationAddToCart confirmationAddToCart = new ConfirmationAddToCart(driver);
         confirmationAddToCart.openCartPage();
+
+        CartPage cartPage = new CartPage(driver);
+        String ProductName = cartPage.getProductName(0);
+        String CarTitle = cartPage.getCartTitle();
+        String ProductPrice = cartPage.getProductPrice(0);
+        String SubTotal = cartPage.getSubTotal();
+        String Total = cartPage.getTotal();
+
+        //Assert
+
+        //Assert.assertTrue(ProductPrice, exceptPrice);
+        //Assert.assertEquals(ProductName, productName);
+        Assert.assertTrue(CarTitle.contains(title),"le titre n'est pas le meme");
+        //Assert.assertEquals(SubTotal,subTotal);
+        //Assert.assertEquals(Total,TotalPrice);
 
 
     }
