@@ -27,10 +27,10 @@ public class AppleTest {
     public void IPhone13ProMax256GoBleuAlpinTest(){
 
         String exceptPrice = "1 379,00 €";
-        String productName = "iPhone 13 Pro Max 256 Go Bleu Alpin";
-        String title = "Le montant total de votre Panier est de 1 379,00 ";
-        String subTotal = "Sous-total";
-        String TotalPrice = "Votre total";
+        String exceptproductName = "iPhone 13 Pro Max 256 Go Bleu Alpin";
+        String excepttitle = "Le montant total de votre Panier est de 1 379,00 ";
+        String exceptsubTotal = "Sous-total";
+        String excepttotalPrice = "Votre total";
 
 
         MainPage mainPage = new MainPage(driver);
@@ -64,10 +64,10 @@ public class AppleTest {
         //Assert
 
         //Assert.assertTrue(ProductPrice, exceptPrice);
-        //Assert.assertEquals(ProductName, productName);
-        Assert.assertTrue(CarTitle.contains(title),"le titre n'est pas le meme");
-        //Assert.assertEquals(SubTotal,subTotal);
-        //Assert.assertEquals(Total,TotalPrice);
+        Assert.assertEquals(ProductName, exceptproductName);
+        Assert.assertTrue(CarTitle.contains(excepttitle),"le titre n'est pas le meme");
+        Assert.assertEquals(SubTotal,exceptsubTotal);
+        Assert.assertEquals(Total,excepttotalPrice);
 
 
     }
