@@ -12,8 +12,11 @@ public class ConfirmationAddToCart {
         this.driver = driver;
     }
 
-    public void openCartPage() {
+    public CartPage openCartPage() {
         driver.findElement(selectConAddToCart).click();
+
+        CartPage cartPage = new CartPage(driver);
+        return  cartPage;
 
 
     }

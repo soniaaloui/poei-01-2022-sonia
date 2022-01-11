@@ -28,7 +28,7 @@ public class BuyIphone13ProPage {
         this.driver = driver;
     }
 
-    public void selectPro13Max(){
+    public BuyIphone13ProPage selectPro13Max(){
         driver.findElement(selectProMax).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timepro));
         wait.until(ExpectedConditions.elementToBeClickable(selectColor));
@@ -37,9 +37,10 @@ public class BuyIphone13ProPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return this;
 
     }
-    public void selectBlueAlpin(){
+    public BuyIphone13ProPage selectBlueAlpin(){
         driver.findElement(selectColor).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timepro));
         wait.until(ExpectedConditions.elementToBeClickable(select256Max));
@@ -48,10 +49,11 @@ public class BuyIphone13ProPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return  this;
 
     }
 
-    public void select256Go(){
+    public BuyIphone13ProPage select256Go(){
         driver.findElement(select256Max).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timepro));
         wait.until(ExpectedConditions.elementToBeClickable(selectNoTradln));
@@ -60,22 +62,28 @@ public class BuyIphone13ProPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return  this;
 
     }
 
-    public void noAppleTradIn(){
+    public BuyIphone13ProPage noAppleTradIn(){
         driver.findElement(selectNoTradln).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timesearch));
         wait.until(ExpectedConditions.elementToBeClickable(selectCart));
+
+        return this;
     }
 
-    public void addToCart(){
+    public ConfirmationAddToCart addToCart(){
         driver.findElement(selectCart).click();
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        ConfirmationAddToCart confirmationAddToCart = new ConfirmationAddToCart(driver);
+
+        return confirmationAddToCart ;
 
     }
 
