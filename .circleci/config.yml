@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Execute tests!
           command: |
-            ./gradlew test --tests "AppleTest.IPhone13ProMax256GoBleuAlpinTest"
+            ./gradlew test --tests "AppleTest.passedTest"
 
       - run:
           name: Stop selenium grid

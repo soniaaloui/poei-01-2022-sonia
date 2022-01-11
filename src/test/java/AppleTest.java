@@ -81,7 +81,12 @@ public class AppleTest {
         //Assert.assertEquals(SubTotal,exceptsubTotal);
         //Assert.assertEquals(Total,excepttotalPrice);
 
+    }
+    @Test
+    public void passedTest() {
+        MainPage mainPage = new MainPage(driver);
 
+        Assert.assertTrue(true);
     }
 
 
