@@ -20,11 +20,16 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public void openIphonePage (){
+    public IphonePage openIphonePage (){
         
         driver.findElement(openIphonePageSelector).click();
 
+        IphonePage iphonePage = new IphonePage(driver);
 
+
+
+
+      return iphonePage;
     }
 
 }

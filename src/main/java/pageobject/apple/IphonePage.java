@@ -15,10 +15,12 @@ public class IphonePage {
     }
 
 
-    public void openIphone13ProPage(){
+    public Iphone13ProPage openIphone13ProPage(){
 
         driver.findElement(iphone13ProResultSelector).click();
 
+        Iphone13ProPage iphone13ProPage = new Iphone13ProPage(driver);
 
+         return iphone13ProPage;
     }
 }

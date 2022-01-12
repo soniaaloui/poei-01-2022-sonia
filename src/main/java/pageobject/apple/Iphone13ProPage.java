@@ -12,8 +12,17 @@ public class Iphone13ProPage {
         this.driver = driver;
     }
 
-    public void buy(){
+    public BuyIphone13ProPage buy(){
         driver.findElement(buySelector).click();
+        BuyIphone13ProPage buyIphone13ProPage = new BuyIphone13ProPage(driver);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return buyIphone13ProPage;
+
 
     }
 }

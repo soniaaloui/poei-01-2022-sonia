@@ -20,14 +20,15 @@ public class AppleTest {
 
     @BeforeMethod
     public void setup() {
-        URL seleniumGridUrl = null;
+        /*URL seleniumGridUrl = null;
         try {
             seleniumGridUrl = new URL("http://127.0.0.1:4444");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         ChromeOptions chromeOptions = new ChromeOptions();
-        driver = new RemoteWebDriver(seleniumGridUrl, chromeOptions);
+        driver = new RemoteWebDriver(seleniumGridUrl, chromeOptions);*/
+        driver = new ChromeDriver();
         driver.get("https://www.apple.com/fr");
         driver.manage().window().maximize();
 
@@ -38,22 +39,30 @@ public class AppleTest {
     @Test
     public void IPhone13ProMax256GoBleuAlpinTest(){
 
-        String exceptPrice = "1 379,00 €";
+        String exceptPrice = "1 379,00";
         String exceptproductName = "iPhone 13 Pro Max 256 Go Bleu Alpin";
-        String excepttitle = "Le montant total de votre Panier est de 1 379,00 ";
+        String excepttitle = "Le montant total de votre Panier est de 1 379,00";
+
         String exceptsubTotal = "Sous-total";
         String excepttotalPrice = "Votre total";
 
 
         MainPage mainPage = new MainPage(driver);
-        mainPage.openIphonePage();
+        CartPage cartPage = mainPage.openIphonePage().openIphone13ProPage()
+                .buy()
+                .selectPro13Max()
+                .selectBlueAlpin()
+                .select256Go()
+                .noAppleTradIn()
+                .addToCart()
+                .openCartPage();
 
 
-        IphonePage iphonePage = new IphonePage(driver);
-        iphonePage.openIphone13ProPage();
+        /*IphonePage iphonePage = new IphonePage(driver);
+        iphonePage.openIphone13ProPage();-------*/
 
-        Iphone13ProPage iphone13ProPage = new Iphone13ProPage(driver);
-        iphone13ProPage.buy();
+        /*Iphone13ProPage iphone13ProPage = new Iphone13ProPage(driver);
+        iphone13ProPage.buy() -------------/;
 
         BuyIphone13ProPage buyIphone13ProPage = new BuyIphone13ProPage(driver);
         buyIphone13ProPage.selectPro13Max();
@@ -64,32 +73,40 @@ public class AppleTest {
 
 
         ConfirmationAddToCart confirmationAddToCart = new ConfirmationAddToCart(driver);
-        confirmationAddToCart.openCartPage();
+        confirmationAddToCart.openCartPage();*/
 
-        CartPage cartPage = new CartPage(driver);
+        //CartPage cartPage = new CartPage(driver);
+
+       /* try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String ProductName = cartPage.getProductName(0);
         String CarTitle = cartPage.getCartTitle();
         String ProductPrice = cartPage.getProductPrice(0);
         String SubTotal = cartPage.getSubTotal();
-        String Total = cartPage.getTotal();
+        String Total = cartPage.getTotal();*/
 
         //Assert
+//System.out.println(ProductPrice);
 
-        //Assert.assertTrue(ProductPrice, exceptPrice);
-        //Assert.assertEquals(ProductName, exceptproductName);
-        //Assert.assertTrue(CarTitle.contains(excepttitle),"le titre n'est pas le meme");
-        //Assert.assertEquals(SubTotal,exceptsubTotal);
-        //Assert.assertEquals(Total,excepttotalPrice);
 
+        /*Assert.assertTrue(ProductPrice.contains(exceptPrice), "the price is not the same");
+        Assert.assertEquals(ProductName, exceptproductName);
+        System.out.println(excepttitle);
+
+        Assert.assertTrue(CarTitle.contains(excepttitle),"le titre n'est pas le meme");
+        Assert.assertTrue(SubTotal.contains(exceptPrice));
+        Assert.assertTrue(Total.contains(exceptPrice),"the total price not the same");*/
 
     }
+   /* @Test
+    public void passedTest() {
+        MainPage mainPage = new MainPage(driver);
 
-
-
-
-
-
-
+        Assert.assertTrue(true);
+    }*/
 
    /* @AfterMethod
     public void teardown() {
